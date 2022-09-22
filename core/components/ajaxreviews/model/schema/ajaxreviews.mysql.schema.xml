@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="ajaxreviews" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="ajaxreviews" version="1.1">
+
+    <object class="Rating" table="ajaxreviews_ratings" extends="xPDOSimpleObject">
+        <field key="user_id" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="rating" dbtype="float" phptype="float" null="false" default="0" />
+
+        <index alias="user_id" name="user_id" primary="false" unique="true" type="BTREE">
+            <column key="user_id" length="" collation="A" null="false" />
+        </index>
+        <index alias="rating" name="rating" primary="false" unique="false" type="BTREE">
+            <column key="rating" length="" collation="A" null="false" />
+        </index>
+    </object>
+
+    <object class="Review" table="ajaxreviews" extends="xPDOSimpleObject">
+        <field key="created" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="author_id" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="user_id" dbtype="int" precision="10" phptype="integer" null="false" />
+        <field key="rating" dbtype="float" phptype="float" null="false" default="0" />
+		<field key="title" dbtype="varchar" precision="191" phptype="string" null="true" index="index" />
+        <field key="content" dbtype="mediumtext" phptype="string" null="true" />
+        <field key="active" dbtype="int" precision="1" phptype="integer" null="false" default="0" />
+
+        <index alias="author_id" name="author_id" primary="false" unique="false" type="BTREE">
+            <column key="author_id" length="" collation="A" null="false" />
+        </index>
+        <index alias="user_id" name="user_id" primary="false" unique="false" type="BTREE">
+            <column key="user_id" length="" collation="A" null="false" />
+        </index>
+    </object>
+
+</model>
